@@ -1,6 +1,6 @@
 # Backup
 
-Backup %USERPROFILE% folders in windows using [Robocopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy).
+Backup %USERPROFILE% folders Desktop, Documents, Downloads, Music, Pictures, and Videos in windows using [Robocopy](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/robocopy).
 
 # How to use
 Open powershell 
