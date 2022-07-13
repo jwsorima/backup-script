@@ -5,8 +5,8 @@ Backup %USERPROFILE% folders Desktop, Documents, Downloads, Music, Pictures, and
 # How to use
 Open powershell 
 --> type "Set-Location -Path "folder-location" " 
---> type ".\backup-script.ps1"
+--> type ".\backup.ps1"
 
 or
 
-Right click backup-script.ps1 --> Run with PowerShell
+Right click backup.ps1 --> Run with PowerShell
