@@ -5,7 +5,7 @@ $MusicPath = [Environment]::GetFolderPath("MyMusic")
 $PicturesPath = [Environment]::GetFolderPath("MyPictures")
 $VideosPath = [Environment]::GetFolderPath("MyVideos")
 
-$PasteTo = Read-Host "Type folder location *Make sure it is empty`n(ex. D:\FilesBackup)"
+$PasteTo = Read-Host "Type folder location *Make sure it is empty`n(ex. D:\FilesBackup)" -ForegroundColor Cyan
 
 function Copy-Files {
     New-Item -Path $PasteTo -Name "Desktop" -ItemType "directory"
@@ -33,11 +33,11 @@ if (Test-Path -Path $PasteTo) {
     $VideosPath  -->  $PasteTo\Videos"
 
     while ($true) {
-        $UserInput = Read-Host "continue? (y/n)".ToLower()
+        $UserInput = Read-Host "continue? (y/n)".ToLower() -ForegroundColor Cyan
         if (($UserInput -eq "y") -or ($UserInput -eq "n")) {
             break
         } else {
-            Write-Output "Invalid Input"
+            Write-Host "Invalid Input" -ForegroundColor Red
         }
     }
     if ($UserInput -eq "y") {
@@ -49,10 +49,10 @@ if (Test-Path -Path $PasteTo) {
     }
 
 } else {
-    Write-Output "Location not found`nExit..."
+    Write-Host "Location not found`nExit..." -ForegroundColor Red
     Start-Sleep -Seconds 2
     Exit
 }
 
-Write-Host -NoNewline "`nPress any key to exit..."
+Write-Host -NoNewline "`nPress any key to exit..." -ForegroundColor Green
 [void][System.Console]::ReadKey($true)

@@ -5,7 +5,7 @@ $MusicPath = [Environment]::GetFolderPath("MyMusic")
 $PicturesPath = [Environment]::GetFolderPath("MyPictures")
 $VideosPath = [Environment]::GetFolderPath("MyVideos")
 
-$BackupFolder = Read-Host "Type backup folder location (ex. D:\FilesBackup)"
+$BackupFolder = Read-Host "Type backup folder location (ex. D:\FilesBackup)" -ForegroundColor Cyan
 
 function Restore-Files {
     robocopy "$BackupFolder\Desktop" $DesktopPath /copy:DAT /e /dcopy:T
