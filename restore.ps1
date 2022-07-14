@@ -10,7 +10,7 @@ $BackupFolder = Read-Host "Type backup folder location (ex. D:\FilesBackup)"
 function Find-Folders($Src) {
     if (-Not (Test-Path -Path $Src)) {
         Write-Host "Folder not found." -ForegroundColor Red
-        return
+        Exit
     } else {
         if (Test-Path -Path "$Src\Desktop") {Write-Output "$Src\Desktop --> $DesktopPath"} 
             else {
