@@ -5,7 +5,8 @@ $MusicPath = [Environment]::GetFolderPath("MyMusic")
 $PicturesPath = [Environment]::GetFolderPath("MyPictures")
 $VideosPath = [Environment]::GetFolderPath("MyVideos")
 
-$PasteTo = Read-Host "Type folder location *Make sure it is empty`n(ex. D:\FilesBackup)" -ForegroundColor Cyan
+Write-Host "Type folder location *Make sure it is empty`n(ex. D:\FilesBackup)" -NoNewline -ForegroundColor Cyan
+$PasteTo = Read-Host " "
 
 function Copy-Files {
     New-Item -Path $PasteTo -Name "Desktop" -ItemType "directory"
@@ -33,7 +34,8 @@ if (Test-Path -Path $PasteTo) {
     $VideosPath  -->  $PasteTo\Videos"
 
     while ($true) {
-        $UserInput = Read-Host "continue? (y/n)".ToLower() -ForegroundColor Cyan
+        Write-Host "continue? (y/n)" -NoNewline -ForegroundColor Cyan
+        $UserInput = Read-Host "".ToLower()
         if (($UserInput -eq "y") -or ($UserInput -eq "n")) {
             break
         } else {

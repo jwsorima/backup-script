@@ -5,7 +5,8 @@ $MusicPath = [Environment]::GetFolderPath("MyMusic")
 $PicturesPath = [Environment]::GetFolderPath("MyPictures")
 $VideosPath = [Environment]::GetFolderPath("MyVideos")
 
-$BackupFolder = Read-Host "Type backup folder location (ex. D:\FilesBackup)" -ForegroundColor Cyan
+Write-Host "Type backup folder location (ex. D:\FilesBackup)" -NoNewline -ForegroundColor Cyan
+$BackupFolder = Read-Host " "
 
 function Restore-Files {
     robocopy "$BackupFolder\Desktop" $DesktopPath /copy:DAT /e /dcopy:T
@@ -53,7 +54,8 @@ if (Test-Path -Path "$BackupFolder\Videos") {Write-Output "$BackupFolder\Videos 
     }
 
 while ($true) {
-    $UserInput = Read-Host "continue? (y/n)".ToLower()
+    Write-Host "continue? (y/n)" -NoNewline -ForegroundColor Cyan
+    $UserInput = Read-Host "".ToLower()
     if (($UserInput -eq "y") -or ($UserInput -eq "n")) {
         break
     } else {
