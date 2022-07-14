@@ -7,43 +7,6 @@ $VideosPath = [Environment]::GetFolderPath("MyVideos")
 
 $BackupFolder = Read-Host "Type backup folder location (ex. D:\FilesBackup)"
 
-function Find-Folders($Src) {
-    if (-Not (Test-Path -Path $Src)) {
-        Write-Host "Folder not found." -ForegroundColor Red
-        Exit
-    } else {
-        if (Test-Path -Path "$Src\Desktop") {Write-Output "$Src\Desktop --> $DesktopPath"} 
-            else {
-                Write-Host "Desktop not found." -ForegroundColor Red 
-                Exit
-            }
-        if (Test-Path -Path "$Src\Documents") {Write-Output "$Src\Documents --> $DocumentsPath"} 
-            else {
-                Write-Host "Documents not found." -ForegroundColor Red 
-                Exit
-            }
-        if (Test-Path -Path "$Src\Downloads") {Write-Output "$Src\Downloads --> $DownloadsPath"} 
-            else {
-                Write-Host "Downloads not found." -ForegroundColor Red
-                Exit
-            }
-        if (Test-Path -Path "$Src\Music") {Write-Output "$Src\Music --> $MusicPath"} 
-            else {
-                Write-Host "Music not found." -ForegroundColor Red
-                Exit
-            }
-        if (Test-Path -Path "$Src\Pictures") {Write-Output "$Src\Pictures --> $PicturesPath"} 
-            else {
-                Write-Host "Pictures not found." -ForegroundColor Red 
-                Exit
-            }
-        if (Test-Path -Path "$Src\Videos") {Write-Output "$Src\Videos --> $VideosPath"} 
-            else {
-                Write-Host "Videos not found." -ForegroundColor Red 
-                Exit
-            }
-    }
-}
 function Restore-Files {
     robocopy "$BackupFolder\Desktop" $DesktopPath /copy:DAT /e /dcopy:T
     robocopy "$BackupFolder\Documents" $DocumentsPath /copy:DAT /e /dcopy:T
@@ -52,7 +15,43 @@ function Restore-Files {
     robocopy "$BackupFolder\Pictures" $PicturesPath /copy:DAT /e /dcopy:T
     robocopy "$BackupFolder\Videos" $VideosPath /copy:DAT /e /dcopy:T
 }
-Find-Folders($BackupFolder)
+
+if (-Not (Test-Path -Path $BackupFolder)) {
+    Write-Host "Folder not found." -ForegroundColor Red
+    return
+}
+
+if (Test-Path -Path "$BackupFolder\Desktop") {Write-Output "$BackupFolder\Desktop --> $DesktopPath"} 
+    else {
+        Write-Host "Desktop not found." -ForegroundColor Red 
+        return
+    }
+if (Test-Path -Path "$BackupFolder\Documents") {Write-Output "$BackupFolder\Documents --> $DocumentsPath"} 
+    else {
+        Write-Host "Documents not found." -ForegroundColor Red 
+        return
+    }
+if (Test-Path -Path "$BackupFolder\Downloads") {Write-Output "$BackupFolder\Downloads --> $DownloadsPath"} 
+    else {
+        Write-Host "Downloads not found." -ForegroundColor Red
+        return
+    }
+if (Test-Path -Path "$BackupFolder\Music") {Write-Output "$BackupFolder\Music --> $MusicPath"} 
+    else {
+        Write-Host "Music not found." -ForegroundColor Red
+        return
+    }
+if (Test-Path -Path "$BackupFolder\Pictures") {Write-Output "$BackupFolder\Pictures --> $PicturesPath"} 
+    else {
+        Write-Host "Pictures not found." -ForegroundColor Red 
+        return
+    }
+if (Test-Path -Path "$BackupFolder\Videos") {Write-Output "$BackupFolder\Videos --> $VideosPath"} 
+    else {
+        Write-Host "Videos not found." -ForegroundColor Red 
+        return
+    }
+
 while ($true) {
     $UserInput = Read-Host "continue? (y/n)".ToLower()
     if (($UserInput -eq "y") -or ($UserInput -eq "n")) {
